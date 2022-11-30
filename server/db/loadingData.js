@@ -21,6 +21,11 @@ pool
   })
   .then(() => {
     console.log('Review sequence successfully updated');
+    // Convert date from unix time to ISO time
+    return pool.query(`ALTER TABLE reviews ALTER COLUMN date SET DATA TYPE TIMESTAMP WITH TIME ZONE USING to_timestamp(date/1000);`)
+  })
+  .then(() => {
+    console.log('Date comlumn successfully converted');
     // Copy data from reviews_photos.csv to photos table
     return pool.query(`COPY photos(id, review_id, url) FROM '/Users/huantran/documents/Hack_Reactor/review-csv/reviews_photos.csv' DELIMITER ',' CSV HEADER;`)
   })

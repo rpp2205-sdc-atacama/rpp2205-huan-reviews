@@ -18,7 +18,7 @@ module.exports = {
               WHEN "type" = 'Quality' THEN '${product_id}-Quality'
               WHEN "type" = 'Size' THEN '${product_id}-Size'
               WHEN "type" = 'Width' THEN '${product_id}-Width'
-            END AS id, "type", avg(value) AS value FROM characteristics where product_id = ${product_id} GROUP BY "type"
+            END AS id, "type", avg(value) AS value FROM characteristics WHERE product_id = ${product_id} GROUP BY "type"
           ) AS char_avg
         ) AS char_detail
       ),
@@ -67,7 +67,7 @@ module.exports = {
     const queryString = `
     SELECT json_agg(reviews_info) FROM (
       SELECT reviews.id AS review_id, summary, body, date, helpfulness, rating, recommended AS recommend, reviewer_name, response, (
-        SELECT json_agg(photos) FROM (
+        SELECT coalesce(json_agg(photos), '[]'::json) FROM (
           SELECT id, url FROM photos WHERE review_id = reviews.id) photos
       ) AS photos FROM reviews
       WHERE product_id = ${product_id}
