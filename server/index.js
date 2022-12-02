@@ -1,5 +1,7 @@
 const express = require('express');
-const pool = require('./db/schema.js');
+// const pool = require('./db/schema.js');
+const {getReviewMetaHandler, getReviewsHandler, postReviewHandler, updateReviewReportHandler, updateReviewHelpfulnessHandler} = require('./models.js');
+
 const {
   getReviewMeta,
   getReviews,
@@ -21,8 +23,32 @@ app.post('/reviews', postReview);
 app.put('/reviews/:review_id/report', updateReviewReport);
 app.put('/reviews/:review_id/helpful', updateReviewHelpfulness);
 
+// console.log(getReviewsHandler(2, 5, 'helpful'))
+// console.log(getReviewMetaHandler(4))
 
-const PORT = 3000;
+// const review = {
+//   product_id: 7,
+//   rating: 5,
+//   summary: 'Looks fabulous',
+//   body: 'My wife loves it. Gotta buy more',
+//   recommend: true,
+//   name: 'David',
+//   email: 'email.lala@gmail.com'
+// }
+// const photos = ['https://unsplash.com/photos/jvoZ-Aux9aw', 'https://unsplash.com/photos/ukp5-rExkP4', 'https://unsplash.com/photos/DTZV8WDM1Ho'];
+// const characteristics = {
+//   '7-Comfort': 3,
+//   '7-Size': 4,
+//   '7-Width': 4
+// }
+// postReviewHandler(review, photos, characteristics)
+
+// updateReviewReportHandler(5774959);
+
+// updateReviewHelpfulnessHandler(5774959);
+
+
+const PORT = 8000;
 app.listen(PORT, () => {
   console.log('Listening to port ', PORT)
 });
