@@ -22,7 +22,6 @@ module.exports = {
     const product_id = req.params.product_id;
     const count = req.params.count || null;
     const sort = req.params.sort;
-    console.log(count)
     try {
       const reviewList = await getReviewsHandler(product_id, count, sort);
       const result = {
