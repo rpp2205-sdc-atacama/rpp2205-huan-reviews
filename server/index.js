@@ -1,6 +1,7 @@
+require("dotenv").config();
 const express = require('express');
 // const pool = require('./db/schema.js');
-const {getReviewMetaHandler, getReviewsHandler, postReviewHandler, updateReviewReportHandler, updateReviewHelpfulnessHandler} = require('./models.js');
+// const {getReviewMetaHandler, getReviewsHandler, postReviewHandler, updateReviewReportHandler, updateReviewHelpfulnessHandler} = require('./models.js');
 
 const {
   getReviewMeta,
@@ -47,8 +48,8 @@ app.put('/reviews/:review_id/helpful', updateReviewHelpfulness);
 
 // updateReviewHelpfulnessHandler(5774959);
 
-
-const PORT = 8000;
-app.listen(PORT, () => {
-  console.log('Listening to port ', PORT)
+const server = app.listen(process.env.PORT, () => {
+  console.log('Listening to port ', process.env.PORT)
 });
+
+module.exports = server;
