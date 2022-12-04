@@ -1,4 +1,4 @@
-const pool = require('./db/schema.js');
+// const pool = require('./db/schema.js');
 const { getReviewMetaHandler,
         getReviewsHandler,
         postReviewHandler,
