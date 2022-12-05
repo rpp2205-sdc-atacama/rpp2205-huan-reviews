@@ -5,7 +5,7 @@ const server = require("../server/index.js");
 // const url = `http://localhost:${process.env.PORT}/reviews`;
 const product_id = 2;
 
-jest.setTimeout(20000);
+// jest.setTimeout(20000);
 
 test('test getReviews', async() => {
   const count = 500;
