@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch",
+    "k6": "k6 run test/k6.js",
     "coverage": "npm test -- --coverage",
     "server": "nodemon server/index.js"
   },
