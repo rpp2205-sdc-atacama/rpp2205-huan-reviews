@@ -80,18 +80,16 @@ const handlers = {
         orderBy = 'reviews.id DESC'
     }
     const queryString = `
-    SELECT json_agg(reviews_info) FROM (
       SELECT reviews.id AS review_id, summary, body, date, helpfulness, rating, recommended AS recommend, reviewer_name, response, (
         SELECT coalesce(json_agg(photos), '[]'::json) FROM (
           SELECT id, url FROM photos WHERE review_id = reviews.id) photos
       ) AS photos FROM reviews
       WHERE product_id = ${product_id} AND reported = false
       ORDER BY ${orderBy}
-      LIMIT ${count}
-    ) reviews_info`
+      LIMIT ${count}`
     try {
       const result = await client.query(queryString)
-      const reviewList = result.rows[0].json_agg;
+      const reviewList = result.rows;
       console.log('Reviews: ', reviewList)
       return reviewList;
     }

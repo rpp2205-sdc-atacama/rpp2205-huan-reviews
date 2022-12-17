@@ -14,9 +14,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.get('/', (req, res) => {
-  res.json({info: 'Node.js, Express, and Postgres API'})
-})
+// app.get('/', (req, res) => {
+//   res.json({info: 'Node.js, Express, and Postgres API'})
+// })
 
 app.get('/reviews/meta/:product_id', getReviewMeta);
 app.get('/reviews/:product_id/:count/:sort', getReviews);

@@ -48,6 +48,7 @@ module.exports = {
       email: req.body.email
     };
     try {
+      console.log('Char obj', req.body.characteristics)
       await postReviewHandler(reviewObj, req.body.photos, req.body.characteristics)
       res.status(201).send('New review add!')
     }
