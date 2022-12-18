@@ -1,0 +1,4 @@
+services:
+  image: "huantran123/sdc-reviews"
+  env_file:
+    - .env
