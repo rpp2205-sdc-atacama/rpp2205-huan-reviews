@@ -9,6 +9,7 @@ const client = new Client({
   password: process.env.DB_PASSWORD
 });
 
+
 client.connect((err) => {
   if (err) {
     console.error('connect error: ', err.stack)
