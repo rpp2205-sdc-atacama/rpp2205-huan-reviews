@@ -50,6 +50,7 @@ app.put('/reviews/:review_id/helpful', updateReviewHelpfulness);
 
 const server = app.listen(process.env.PORT, () => {
   console.log('Listening to port ', process.env.PORT)
+  console.log('DB ', process.env.DB_HOST)
 });
 
 module.exports = server;
