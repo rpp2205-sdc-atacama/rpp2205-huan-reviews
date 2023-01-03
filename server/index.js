@@ -23,8 +23,8 @@ app.get('/reviews/:product_id/:count/:sort', getReviews);
 app.post('/reviews', postReview);
 app.put('/reviews/:review_id/report', updateReviewReport);
 app.put('/reviews/:review_id/helpful', updateReviewHelpfulness);
-app.get('/loaderio-ca762265c4d82c59c412df2eeb76b152.txt', (req, res) => {
-  res.sendFile('loaderio-ca762265c4d82c59c412df2eeb76b152.txt', {root:__dirname});
+app.get('/loaderio-bc70e5778afdb5e2af98b094fe15b402.txt', (req, res) => {
+  res.sendFile('loaderio-bc70e5778afdb5e2af98b094fe15b402.txt', {root:__dirname});
 })
 
 // console.log(getReviewsHandler(2, 5, 'helpful'))
