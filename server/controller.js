@@ -8,7 +8,7 @@ const { getReviewMetaHandler,
 
 module.exports = {
   getReviewMeta: async (req, res) => {
-    const product_id = req.params.product_id;
+    const product_id = req.query.product_id;
     try {
       const reviewMeta = await getReviewMetaHandler(product_id);
       res.status(200).json(reviewMeta);
@@ -19,9 +19,9 @@ module.exports = {
   },
 
   getReviews: async (req, res) => {
-    const product_id = req.params.product_id;
-    const count = req.params.count || null;
-    const sort = req.params.sort;
+    const product_id = req.query.product_id;
+    const count = req.query.count || null;
+    const sort = req.query.sort;
     try {
       const reviewList = await getReviewsHandler(product_id, count, sort);
       const result = {
