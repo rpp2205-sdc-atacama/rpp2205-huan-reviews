@@ -11,7 +11,7 @@ test('test getReviews', async() => {
   const count = 500;
   const sort = 'relevant'
   try {
-    const response = await request(server).get(`/reviews/${product_id}/${count}/${sort}`)
+    const response = await request(server).get(`/reviews/?product_id=${product_id}&count=${count}&sort=${sort}`)
     const reviewList = response.body.results;
     expect(response.statusCode).toBe(200);
     expect(reviewList.length).toBe(5);
@@ -29,7 +29,7 @@ test('test getReviews', async() => {
 
 test('test getReviewMeta', async() => {
   try {
-    const response = await request(server).get(`/reviews/meta/${product_id}`)
+    const response = await request(server).get(`/reviews/meta/?product_id=${product_id}`)
     const reviewMeta = response.body;
     expect(response.statusCode).toBe(200);
     expect(reviewMeta.product_id).toBe(product_id);

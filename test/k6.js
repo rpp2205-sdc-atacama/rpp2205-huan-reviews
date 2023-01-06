@@ -13,14 +13,14 @@ export default function() {
   const headers = { 'Content-Type': 'application/json' };
 
   group('get review list', () => {
-    let res = http.get(`${url}/reviews/${product_id}/500/relevant`)
+    let res = http.get(`${url}/reviews/?product_id=${product_id}&count=500&sort=relevant`)
     check(res, {
       "get review list success": (r) => r.status == 200
     });
   })
 
   group('get review meta', () => {
-    let res = http.get(`${url}/reviews/meta/${product_id}`)
+    let res = http.get(`${url}/reviews/meta/?product_id=${product_id}`)
     check(res, {
       "get review meta success": (r) => r.status == 200
     });

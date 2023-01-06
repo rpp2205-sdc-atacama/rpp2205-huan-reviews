@@ -18,8 +18,8 @@ app.use(express.urlencoded({extended: true}));
 //   res.json({info: 'Node.js, Express, and Postgres API'})
 // })
 
-app.get('/reviews/meta/:product_id', getReviewMeta);
-app.get('/reviews/:product_id/:count/:sort', getReviews);
+app.get('/reviews/meta/', getReviewMeta);
+app.get('/reviews/', getReviews);
 app.post('/reviews', postReview);
 app.put('/reviews/:review_id/report', updateReviewReport);
 app.put('/reviews/:review_id/helpful', updateReviewHelpfulness);
