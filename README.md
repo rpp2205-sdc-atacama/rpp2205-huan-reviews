@@ -24,7 +24,7 @@ Testing: Jest | SuperTest | K6 | Loader.io
   ![reviews_schema_design](https://user-images.githubusercontent.com/103070104/201466345-60016a5d-a7a3-4177-a108-c3fa5c77ea0e.png)
   
   ### Architecture
-  ![Architecture](https://user-images.githubusercontent.com/103070104/212242002-15f0f641-7ab4-4401-98ea-9125e3acbb1f.png)
+  ![Architecture](https://user-images.githubusercontent.com/103070104/212256802-39dafe44-7b74-48a6-a607-ccceb319c2cd.png)
 
   
    ### Stress Test Results via Loader.io
