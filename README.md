@@ -123,21 +123,19 @@ Testing: Jest | SuperTest | K6 | Loader.io
 ## DB Initialization and ETL Quaries in Postgres
 ### Local
   1. Run `node db/schema.js` to create tables
-  2. Run `node db/importData.js` to import data from csv files (if deployed to cloud, run copyData-AWS-EC2.sql instead)
-  3. Run `node db/addIndex.js` to create indexes 
-  4. After load testing APIs using K6, run `node db/deleteTestData.js` to delete load test data.
+  2. Run `node db/loadingData.js` to import data from csv files (if deployed to cloud, run copyData-AWS-EC2.sql instead). Make sure to replace the file paths with your paths
 
 ### Deploy to cloud
   1. Create database
-  2. Create file named `schema.sql` copy codes from `db/awsSchema.sql`
-  3. Create file name `importData.sql` copy codes from `db/awsImportData.sql` 
+  2. Create file named `schema.sql` and copy commands from `db/schema.sql`
+  3. Create file name `loadingData.sql` and copy commands from `db/loadingData.sql` 
   3. Run `psql -h localhost -U your-user-name -d your-cloud-database-name -f \schema.sql`
-  4. Transfer the CSV files from loacal to cloud server
+  4. Transfer the CSV files from local to cloud server
   5. Run `psql -h localhost -U your-user-name -d your-cloud-database-name` -f \importData.sql`
   
 ---
 ## Installation
-  1. In the terminal inside, run `npm run server` to start server
+  1. In the terminal inside, run `npm run server/index.js` to start server
   2. Test by typing `http://localhost:8000/reviews?product_id=1` in the Postman to see the response.
   
 ---
@@ -146,4 +144,4 @@ Please reference other API Services that make up the other part of the e-commerc
   
   - <a href='https://github.com/rpp2205-sdc-atacama/rpp2205-yui-overview'>Product Overviews</a> by Yui Murayama
   
-  - <a href='https://github.com/rpp2205-sdc-atacama/rpp2205-yuchen-QA'>Reviews</a> by Yuchen Pan
+  - <a href='https://github.com/rpp2205-sdc-atacama/rpp2205-yuchen-QA'>Q&A</a> by Yuchen Pan
