@@ -1,6 +1,6 @@
 # Retail Q&A | Back-end services for e-commerce web app
 
-Our 3 software engineers rebuilt back-end API service for a monolithic to service-oriented micorservices to support our existing e-commerce site in this project. The service I built was scaled to meet the demands of production traffic with 8000RPS with < 40ms response time with 0% error rate.
+Our 3 software engineers rebuilt back-end API service for a monolithic to service-oriented micorservices to support our existing e-commerce site in this project. The service I built was scaled to meet the demands of production traffic with 6000RPS with < 40ms response time with 0% error rate.
 
 ## Techonologies Used
 
@@ -28,9 +28,9 @@ Testing: Jest | SuperTest | K6 | Loader.io
 
   
    ### Stress Test Results via Loader.io
-   <img width="1100" alt="load tests 1" src="https://user-images.githubusercontent.com/86500068/211911479-5581195f-2e1d-4ad4-a6af-cea76f725dd1.png">
-   <img width="1100" alt="load tests 2" src="https://user-images.githubusercontent.com/86500068/211912469-5c6f8bb9-72b8-43f9-a938-c9270d6f67aa.png">
-   <img width="1100" alt="load tests 3" src="https://user-images.githubusercontent.com/86500068/211911384-9d892f9f-5956-478e-83eb-7ec22597391f.png">
+   ![1000 RPS](https://user-images.githubusercontent.com/103070104/210714539-e7b419f7-2e9b-4255-92bd-d3ac017fbef6.png)
+   ![3000 RPS](https://user-images.githubusercontent.com/103070104/210714775-f82f3d7f-cc1d-4d75-9282-0e5b1fab7445.png)
+   ![6000 RPS](https://user-images.githubusercontent.com/103070104/210714852-58d9ddbb-bb11-4eb3-a4d2-a72feb3b44fe.png)
    
    ---
 ## Usage
