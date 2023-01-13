@@ -34,112 +34,91 @@ Testing: Jest | SuperTest | K6 | Loader.io
    
    ---
 ## Usage
-  ### List questions
-  Retrieves a list of questions for a particular product. This list does not include any reported questions
+  ### Review List
+  Returns a list of reviews for a particular product. This list does not include any reported reviews.
 
-  `GET /qa/questions`
+  `GET /reviews/`
   
   *Query Parameters*
 
   | Parameter	 | Type      | Description                                               |
   | ---------- | :-------: | --------------------------------------------------------- |
-  | product_id |  integer  | Required ID of the question for which data should be returned |
+  | product_id |  integer  | Specifies the product for which to retrieve reviews. |
   | page |  integer  | Selects the page of results to return. Default 1. |
   | count |  integer  | Specifies how many results per page to return. Default 5 |
+  | sort |  text  | Changes the sort order of reviews to be based on "newest", "helpful", or "relevant" |
 
   Response: `Status: 200 OK`
   
-  <img alt="GET /qa/questions" src="https://user-images.githubusercontent.com/86500068/212131181-19cc8137-84c1-4a7c-8478-72b9c9046252.png">
+  ![Review list query](https://user-images.githubusercontent.com/103070104/204722521-1f155531-803f-4777-9bf7-81e6e607b107.jpg)
 
   
-  ### Answers List
-  Returns answers for a given question. This list does not include any reported answers
+  ### Review Metadata
+  Returns review metadata for a given product.
 
-  `GET /qa/questions/:question_id/answers`
+  `GET /reviews/meta`
 
   *Query Parameters*
 
   | Parameter	 | Type      | Description                                               |
   | ---------- | :-------: | --------------------------------------------------------- |
-  | question_id |  integer  | Required ID of the question for which answers are needed |
+  | product_id |  integer  | Required ID of the product for which data should be returned |
 
   Response: `Status: 200 OK`
   
-  <img alt="GET /qa/questions/:question_id/answers" src="https://user-images.githubusercontent.com/86500068/212131227-f4a5a3a7-56a5-4ec8-96e1-00f6bdfd0b72.png">
+  ![image](https://user-images.githubusercontent.com/103070104/212246724-1339b04b-a278-480a-b782-7c854d9aa68c.png)
+
  
   
-  ### Add a Question
-  Adds a question for the given product
+  ### Add a Review
+  Adds a review for the given product.
 
-  `POST /qa/questions`
+  `POST /reviews`
 
   *Query Parameters*
 
   | Parameter	 | Type      | Description                                               |
   | ---------- | :-------: | --------------------------------------------------------- |
-  | body |  text  | Text of question being asked |
-  | name |  text  | Username for question asker |
-  | email |  text  | Email address for question asker |
-  | product_id |  integer  | Required ID of the Product for which the question is posted |
+  | product_id |  integer  | Required ID of the product to post the review for |
+  | rating |  int  | Integer (1-5) indicating the review rating |
+  | summary |  text  | Summary text of the review |
+  | body |  text  | Continued or full text of the review |
+  | recommend |  bool  | Value indicating if the reviewer recommends the product |
+  | name |  text  | Username of reviewer |
+  | email |  text  | Email address of reviewer |
+  | photos |  [text]  | Array of text urls that link to images to be shown |
+  | characteristics |  object  | Object of keys representing characteristic_id and values representing the review value for that characteristic. { "14": 5, "15": 5 //...} |
 
   Response: `Status: 201 Created`
 
   
-  ### Mark Question as Helpful
-  Updates a question to show it was found helpful
+  ### Mark Review as Helpful
+  Updates a review to show it was found helpful.
 
-  `PUT /qa/questions/:question_id/helpful`
-
-  *Query Parameters*
-
-  | Parameter	 | Type      | Description                                               |
-  | ---------- | :-------: | --------------------------------------------------------- |
-  | question_id |  integer  | Required ID of the question to update |
-
-  Response: `Status: 204 NO CONTENT`
-  
-  
-  ### Report Question
-  Updates a question to show it was reported. Note, this action does not delete the question, but the question will not be returned in the above GET request
-
-  `PUT /qa/questions/:question_id/report`
+  `PUT /reviews/:review_id/helpful`
 
   *Query Parameters*
 
   | Parameter	 | Type      | Description                                               |
   | ---------- | :-------: | --------------------------------------------------------- |
-  | question_id |  integer  | Required ID of the question to update |
+  | review_id |  integer  | Required ID of the review to update |
 
   Response: `Status: 204 NO CONTENT`
   
   
-  ### Mark Answer as Helpful
-  Updates an answer to show it was found helpful
+  ### Report Review
+  Updates a review to show it was reported. Note, this action does not delete the review, but the review will not be returned in the above GET request.
 
-  `PUT /qa/answers/:answer_id/helpful`
+  `PUT /reviews/:review_id/report`
 
   *Query Parameters*
 
   | Parameter	 | Type      | Description                                               |
   | ---------- | :-------: | --------------------------------------------------------- |
-  | answer_id |  integer  | Required ID of the answer to update |
+  | review_id |  integer  | Required ID of the review to update |
 
   Response: `Status: 204 NO CONTENT`
   
-  
-  ### Report Answer
-  Updates an answer to show it has been reported. Note, this action does not delete the answer, but the answer will not be returned in the above GET request
-
-  `PUT /qa/answers/:answer_id/helpful`
-
-  *Query Parameters*
-
-  | Parameter	 | Type      | Description                                               |
-  | ---------- | :-------: | --------------------------------------------------------- |
-  | answer_id |  integer  | Required ID of the answer to update |
-
-  Response: `Status: 204 NO CONTENT`
-
 ---
 ## DB Initialization and ETL Quaries in Postgres
 ### Local
@@ -159,7 +138,7 @@ Testing: Jest | SuperTest | K6 | Loader.io
 ---
 ## Installation
   1. In the terminal inside, run `npm run server` to start server
-  2. Test by typing `http://localhost:8000/qa/questions?product_id=1` in the Postman to see the response.
+  2. Test by typing `http://localhost:8000/reviews?product_id=1` in the Postman to see the response.
   
 ---
 ## Other Services
@@ -167,4 +146,4 @@ Please reference other API Services that make up the other part of the e-commerc
   
   - <a href='https://github.com/rpp2205-sdc-atacama/rpp2205-yui-overview'>Product Overviews</a> by Yui Murayama
   
-  - <a href='https://github.com/rpp2205-sdc-atacama/rpp2205-huan-reviews'>Reviews</a> by Huan Tran
+  - <a href='https://github.com/rpp2205-sdc-atacama/rpp2205-yuchen-QA'>Reviews</a> by Yuchen Pan
